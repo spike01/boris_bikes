@@ -12,7 +12,12 @@ class DockingStation
   end
 
   def dock(bike)
+    raise "Station is full" if full?
     @bikes << bike
+  end
+
+  def fill_station(station)
+    20.times { station.dock(Bike.new) }
   end
 
   def release(bike)
@@ -24,7 +29,7 @@ class DockingStation
   end
 
   def available_bikes
-    @bikes.select{|bike| !bike.broken?}
+    @bikes.reject{|bike| bike.broken?}
   end
 
 end
