@@ -16,10 +16,6 @@ class DockingStation
     @bikes << bike
   end
 
-  def fill_station(station)
-    20.times { station.dock(Bike.new) }
-  end
-
   def release(bike)
     @bikes.delete(bike)
   end
