@@ -1,12 +1,12 @@
 require './lib/bike_container'
 
-class ContainerHolder; include BikeContainer; end
+#class ContainerHolder; include BikeContainer; end
 
-describe BikeContainer do
-
-  let(:bike) { Bike.new }
-  let(:holder) { ContainerHolder.new }
- # let(:holder) { described_class.new }
+# describe BikeContainer do
+  shared_examples "a bike container" do
+    let(:holder) { described_class.new }
+    let(:bike) { Bike.new }
+#  let(:holder) { ContainerHolder.new }
   def fill_holder(holder)
   holder.capacity.times { holder.dock(Bike.new) }
   end

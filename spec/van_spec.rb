@@ -2,6 +2,8 @@ require './lib/van'
 
 describe Van do
 
+  it_behaves_like "a bike container"
+
   let(:van) { Van.new(capacity: 66) }
   let(:bike) { Bike.new }
   let(:bike2) { Bike.new }
