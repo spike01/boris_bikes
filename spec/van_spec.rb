@@ -47,7 +47,8 @@ describe Van do
     bike2.break!
     van.deliver_to_garage(garage)
     expect(van.broken_bikes.count).to eq(0)
-    expect(garage.broken_bikes.count).to eq(2)
+    expect(garage.available_bikes.count).to eq(2)
   end
+
 end
 

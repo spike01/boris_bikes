@@ -33,6 +33,7 @@ class Van
    broken_bikes.each do |bike|
      release(bike)
      garage.dock(bike)
+     garage.fix_bikes!
    end
  end
 end
