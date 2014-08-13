@@ -4,14 +4,14 @@ describe Van do
 
   it_behaves_like "a bike container"
 
-  let(:van) { Van.new(capacity: 66) }
+  let(:van) { Van.new(capacity: 20) }
   let(:bike) { Bike.new }
   let(:bike2) { Bike.new }
   let(:station) { DockingStation.new }
   let(:garage) { Garage.new }
   
   it "should allow setting default capacity on initializing" do
-    expect(van.capacity).to eq(66)
+    expect(van.capacity).to eq(20)
   end
 
   it "should pick up broken bikes from a dock" do

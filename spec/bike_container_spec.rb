@@ -1,26 +1,24 @@
 require './lib/bike_container'
 
-#class ContainerHolder; include BikeContainer; end
-
-# describe BikeContainer do
   shared_examples "a bike container" do
+
     let(:holder) { described_class.new }
     let(:bike) { Bike.new }
-#  let(:holder) { ContainerHolder.new }
+
   def fill_holder(holder)
   holder.capacity.times { holder.dock(Bike.new) }
   end
 
   it "should dock a bike" do
-    expect(holder.bike_count).to eq(0)
+    expect(holder.empty?).to be true
     holder.dock(bike)
-    expect(holder.bike_count).to eq(1)
+    expect(holder.available_bikes.any? || holder.broken_bikes.any?).to be true
   end
 
   it "should release a bike" do
     holder.dock(bike)
     holder.release(bike)
-    expect(holder.bike_count).to eq(0)
+    expect(holder.empty?).to be true
   end
 
   it "should know when it's full" do
@@ -48,4 +46,13 @@ require './lib/bike_container'
     holder.dock(broken_bike)
     expect(holder.broken_bikes).to eq([broken_bike])
   end
+
+  it "should know when it's empty" do
+    expect(lambda { holder.release(bike) }).to raise_error(RuntimeError)    
+  end
+
+  it "should only accept bikes" do
+    expect(lambda { holder.dock(holder) }).to raise_error(RuntimeError)
+  end
+
 end
