@@ -6,9 +6,9 @@ describe BikeContainer do
 
   let(:bike) { Bike.new }
   let(:holder) { ContainerHolder.new }
-
+ # let(:holder) { described_class.new }
   def fill_holder(holder)
-  10.times { holder.dock(Bike.new) }
+  holder.capacity.times { holder.dock(Bike.new) }
   end
 
   it "should dock a bike" do

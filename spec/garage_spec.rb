@@ -15,7 +15,7 @@ describe Garage do
     broken_bike2.break!
     garage.dock(broken_bike1)
     garage.dock(broken_bike2)
-    garage.fix_bikes
+    garage.fix_bikes!
     expect(broken_bike1.broken?).to be false
     expect(broken_bike2.broken?).to be false
   end
