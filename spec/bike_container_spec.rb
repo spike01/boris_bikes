@@ -11,7 +11,7 @@ describe BikeContainer do
   10.times { holder.dock(Bike.new) }
   end
 
-  it "should accept a bike" do
+  it "should dock a bike" do
     expect(holder.bike_count).to eq(0)
     holder.dock(bike)
     expect(holder.bike_count).to eq(1)
@@ -28,14 +28,9 @@ describe BikeContainer do
     expect(holder).to be_full
   end
 
-  it "should not accept a bike if it's full" do
+  it "should not dock a bike if it's full" do
     fill_holder(holder)
     expect(lambda { holder.dock(bike) }).to raise_error(RuntimeError)
-  end
-
-  it "should be able to select nonbroken bikes" do
-    holder.dock(bike)
-    expect(holder.available_bikes).to eq [bike]
   end
 
   it "should provide the list of available bikes" do
@@ -44,5 +39,13 @@ describe BikeContainer do
     holder.dock(working_bike)
     holder.dock(broken_bike)
     expect(holder.available_bikes).to eq([working_bike])
+  end
+
+  it "should provide the list of broken bikes" do
+    working_bike, broken_bike = Bike.new, Bike.new
+    broken_bike.break!
+    holder.dock(working_bike)
+    holder.dock(broken_bike)
+    expect(holder.broken_bikes).to eq([broken_bike])
   end
 end
