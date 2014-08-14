@@ -1,8 +1,10 @@
 
 class Bike
+  
+  attr_accessor :broken
 
-  def initialize
-    @broken = false
+  def initialize(params = {})
+    @broken = params.fetch(:broken, false) 
   end
 
   def broken?
@@ -11,6 +13,7 @@ class Bike
 
   def break!
     @broken = true
+    self
   end
 
   def fix!

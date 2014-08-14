@@ -3,7 +3,7 @@ require 'garage'
 describe Garage do
   it_behaves_like "a bike container"
 
-  let(:garage) { Garage.new(:capacity => 666) }
+  let(:garage) { Garage.new(capacity: 666) }
   let(:broken_bike1) {Bike.new}
   let(:broken_bike2) {Bike.new}
 
