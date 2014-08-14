@@ -4,6 +4,7 @@ class Van
 
   include BikeContainer
 
+  
 
   def pickup_from_dock(station)
     station.broken_bikes.each do |bike|
@@ -30,7 +31,6 @@ class Van
    broken_bikes.each do |bike|
      release(bike)
      garage.dock(bike)
-     garage.fix_bikes!
    end
  end
 end

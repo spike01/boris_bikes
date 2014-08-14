@@ -37,18 +37,18 @@ require './lib/bike_container'
   end
 
   it "should provide the list of available bikes" do
-    working_bike, broken_bike = Bike.new, Bike.new
-    broken_bike.break!
+    working_bike, broken_bike = Bike.new, Bike.new(broken: true)
     holder.dock(working_bike)
     holder.dock(broken_bike)
+    broken_bike.break!
     expect(holder.available_bikes).to eq([working_bike])
   end
 
   it "should provide the list of broken bikes" do
-    working_bike, broken_bike = Bike.new, Bike.new
-    broken_bike.break!
+    working_bike, broken_bike = Bike.new, Bike.new(broken: true)
     holder.dock(working_bike)
     holder.dock(broken_bike)
+    broken_bike.break!
     expect(holder.broken_bikes).to eq([broken_bike])
   end
 

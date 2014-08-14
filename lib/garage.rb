@@ -4,8 +4,9 @@ class Garage
 
   include BikeContainer
 
-  def fix_bikes!
-    broken_bikes.each { |bike| bike.fix! }
+  def dock(bike)
+    super
+    bike.fix!
   end
   
 end

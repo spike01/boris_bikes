@@ -15,9 +15,9 @@ describe Van do
   end
 
   it "should be able to initialize with bikes inside" do
-    van2 = Van.new(bikes: 2)
-    expect(van2.available_bikes.count).to eq(2)
+    expect(van.available_bikes.count).to eq(2)
   end
+
 
   it "should pick up broken bikes from a dock" do
    station.dock(broken_bike)
