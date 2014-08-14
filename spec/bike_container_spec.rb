@@ -9,6 +9,11 @@ require './lib/bike_container'
   holder.capacity.times { holder.dock(Bike.new) }
   end
 
+  it "should be able to initialize with bikes inside" do
+    holder2 = described_class.new(bikes: 5)
+    expect(holder2.available_bikes.count).to eq(5)
+  end
+
   it "should dock a bike" do
     expect(holder.empty?).to be true
     holder.dock(bike)
