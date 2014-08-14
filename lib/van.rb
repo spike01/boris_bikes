@@ -4,9 +4,6 @@ class Van
 
   include BikeContainer
 
-  def initialize(options = {})
-    self.capacity = options.fetch(:capacity, capacity)
-  end
 
   def pickup_from_dock(station)
     station.broken_bikes.each do |bike|

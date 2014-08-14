@@ -1,9 +1,19 @@
 module BikeContainer
 
   DEFAULT_CAPACITY = 10
-  
+
+  def initialize(options = {})
+    self.capacity = options.fetch(:capacity, capacity)
+    number_of_bikes = options.fetch(:bikes, 0)
+    number_of_bikes.times { bikes << Bike.new }
+  end
+ 
   def bikes
     @bikes ||= []
+  end
+  
+  def bikes=(value)
+    @bikes = value
   end
 
   def capacity
@@ -13,10 +23,6 @@ module BikeContainer
   def capacity=(value)
     @capacity = value
   end
-
-#  def bike_count
-#    bikes.count
-#  end
 
   def dock(bike)
     raise "No space!" if full?

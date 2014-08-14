@@ -7,6 +7,8 @@ describe Van do
   let(:van) { Van.new(capacity: 20) }
   let(:bike) { Bike.new }
   let(:bike2) { Bike.new }
+  let(:broken_bike) { Bike.new(broken: true) }
+  let(:broken_bike2) { Bike.new(broken: true) }
   let(:station) { DockingStation.new }
   let(:garage) { Garage.new }
   
@@ -14,11 +16,14 @@ describe Van do
     expect(van.capacity).to eq(20)
   end
 
+  it "should be able to initialize with bikes inside" do
+    van2 = Van.new(bikes: 2)
+    expect(van2.available_bikes.count).to eq(2)
+  end
+
   it "should pick up broken bikes from a dock" do
-   bike.break!
-   bike2.break!
-   station.dock(bike)
-   station.dock(bike2)
+   station.dock(broken_bike)
+   station.dock(broken_bike2)
    van.pickup_from_dock(station)
    expect(van.broken_bikes.count).to eq(2)
    expect(station.broken_bikes.count).to eq(0)
@@ -41,10 +46,8 @@ describe Van do
   end
 
   it "should deliver broken bikes to a garage" do
-    van.dock(bike)
-    van.dock(bike2)
-    bike.break!
-    bike2.break!
+    van.dock(broken_bike)
+    van.dock(broken_bike2)
     van.deliver_to_garage(garage)
     expect(van.broken_bikes.count).to eq(0)
     expect(garage.available_bikes.count).to eq(2)
