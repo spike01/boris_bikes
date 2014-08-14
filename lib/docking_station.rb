@@ -4,4 +4,6 @@ class DockingStation
 
   include BikeContainer
   
+  DEFAULT_CAPACITY = 10
+  
 end

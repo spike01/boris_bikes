@@ -4,7 +4,7 @@ class Van
 
   include BikeContainer
 
-  
+  DEFAULT_CAPACITY = 20  
 
   def pickup_from_dock(station)
     station.broken_bikes.each do |bike|
