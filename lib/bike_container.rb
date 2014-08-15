@@ -1,6 +1,8 @@
 module BikeContainer
 
   DEFAULT_CAPACITY = 10
+  
+  attr_accessor :bikes, :capacity
 
   def initialize(options = {})
     self.capacity = options.fetch(:capacity, capacity)
@@ -12,16 +14,8 @@ module BikeContainer
     @bikes ||= []
   end
   
-  def bikes=(value)
-    @bikes = value
-  end
-
   def capacity
     @capacity ||= DEFAULT_CAPACITY
-  end
-
-  def capacity=(value)
-    @capacity = value
   end
 
   def dock(bike)
